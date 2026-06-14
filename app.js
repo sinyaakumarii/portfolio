@@ -19,46 +19,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Typewriter Effect ---
-  const typewriterElement = document.getElementById('typewriter');
-  if (typewriterElement) {
-    const phrases = [
-      "AI & Machine Learning Developer.",
-      "Data Science Enthusiast.",
-      "Software Engineer."
+  // --- Hero Typewriter Effect ---
+  const heroTypewriter = document.getElementById('hero-typewriter');
+  if (heroTypewriter) {
+    const heroRoles = [
+      "Machine Learning Engineer",
+      "AI-powered App Developer",
+      "Python Developer",
+      "Full Stack Web Developer"
     ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+    let roleIndex = 0;
+    let charIdx = 0;
+    let deleting = false;
+    let heroSpeed = 110;
 
-    function type() {
-      const currentPhrase = phrases[phraseIndex];
+    function typeHero() {
+      const current = heroRoles[roleIndex];
 
-      if (isDeleting) {
-        typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
+      if (deleting) {
+        heroTypewriter.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        heroSpeed = 55;
       } else {
-        typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 120;
+        heroTypewriter.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        heroSpeed = 110;
       }
 
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typingSpeed = 2000; // Pause at full word
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typingSpeed = 500; // Pause before typing next word
+      if (!deleting && charIdx === current.length) {
+        deleting = true;
+        heroSpeed = 2200; // Pause at full phrase
+      } else if (deleting && charIdx === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % heroRoles.length;
+        heroSpeed = 450; // Pause before next phrase
       }
 
-      setTimeout(type, typingSpeed);
+      setTimeout(typeHero, heroSpeed);
     }
 
-    // Start the typewriter loop
-    setTimeout(type, 1000);
+    setTimeout(typeHero, 800);
   }
 
   // --- Project Filtering System ---
