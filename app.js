@@ -24,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroTypewriter) {
     const heroRoles = [
       "Machine Learning Engineer",
-      "AI-powered App Developer",
       "Python Developer",
-      "Full Stack Web Developer"
     ];
     let roleIndex = 0;
     let charIdx = 0;
