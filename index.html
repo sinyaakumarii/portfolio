@@ -401,6 +401,75 @@
     });
   </script>
 
+  <script>
+    // 1. TYPING ANIMATION
+    const words = ["Machine Learning Engineer", "AI-powered App Developer", "Python Developer", "Full Stack Web Developer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingText = document.getElementById("hero-typewriter");
+
+    function type() {
+      if (!typingText) return;
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        typingText.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingText.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = 100;
+      if (isDeleting) typeSpeed /= 2;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000; // Pause after typing word
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500; // Pause before typing new word
+      }
+      setTimeout(type, typeSpeed);
+    }
+    document.addEventListener("DOMContentLoaded", () => setTimeout(type, 500));
+
+    // 2. SOUND EFFECTS (Web Audio API)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playSound(frequency, duration, type) {
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+
+      oscillator.type = type;
+      oscillator.frequency.value = frequency;
+
+      gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // Volume
+      gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      oscillator.start();
+      oscillator.stop(audioCtx.currentTime + duration);
+    }
+
+    // Attach sounds to Buttons and Cards
+    document.querySelectorAll('.btn, .cert-card').forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        playSound(600, 0.05, 'sine'); // Soft hover sound
+      });
+      element.addEventListener('click', () => {
+        playSound(300, 0.1, 'triangle'); // Deep click sound
+      });
+    });
+  </script>
+
   <script src="app.js"></script>
 </body>
 
