@@ -254,11 +254,8 @@ nav {
 /* 1. HERO BIO - UPDATED FONT & SPACING */
 .hero-bio {
   color: #f1f5f9;
-  /* Thora sa aur clear/bright color */
   font-size: 1.18rem;
-  /* 1.1rem se barha kar 1.18rem kiya (Perfect balance) */
   line-height: 1.65;
-  /* Lines ke darmiyan behtar readable gap */
   margin-bottom: 2.5rem;
   max-width: 650px;
 }
@@ -541,7 +538,6 @@ nav {
   font-weight: 500;
   font-size: 1rem;
   margin-bottom: 6px;
-  /* Thora sa margin taake text detached dikhe */
   display: inline-block;
 }
 
@@ -555,36 +551,26 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 2. TIMELINE BODY P - UPDATED FONT & SPACING */
 .timeline-body p {
   color: #f1f5f9;
-  /* Isko bright kiya readability ke liye */
   font-size: 1.08rem;
-  /* 0.95rem se barha kar 1.08rem kiya */
   line-height: 1.65;
-  /* Line tight lag rahi thi, ab perfect hai */
 }
 
-/* 3. MILESTONES & RECOGNITION LIST ITEMS - UPDATED */
+/* Milestones */
 #awards .glass-card ul li {
   font-size: 1.1rem !important;
-  /* Bullet text ko bada kiya */
   line-height: 1.65 !important;
-  /* Spacing set ki */
   color: #f1f5f9 !important;
-  /* Bright color diya */
   margin-bottom: 16px !important;
-  /* Points ke beech gap badhaya */
 }
 
 #awards .glass-card ul li:last-child {
   margin-bottom: 0 !important;
-  /* Last point ka extra margin hataya */
 }
 
 #awards .glass-card ul li i {
   font-size: 1.15rem !important;
-  /* Trophy/Certificate icon ka size balance kiya */
 }
 
 /* Contact Grid UI */
@@ -688,7 +674,6 @@ textarea.form-control {
   min-height: 120px;
 }
 
-/* Footer Section */
 footer {
   padding: 3rem 0;
   border-top: 1px solid var(--glass-border);
@@ -708,7 +693,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Fixed Scroll Animation Target Classes */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -720,7 +704,6 @@ footer {
   transform: translateY(0) !important;
 }
 
-/* Keyframe Core System */
 @keyframes blink {
 
   0%,
@@ -733,7 +716,6 @@ footer {
   }
 }
 
-/* Responsive Media Viewports Config */
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -817,7 +799,6 @@ footer {
 /* =====================================================================
    Licenses & Certifications Section
    ===================================================================== */
-
 #certifications {
   padding: 2rem 0;
 }
@@ -889,6 +870,24 @@ footer {
   font-size: 0.8rem;
   color: var(--accent-cyan);
   font-weight: 500;
+}
+
+/* NAYA VIEW CERTIFICATE BUTTON CSS */
+.view-cert-btn {
+  margin-top: 12px;
+  text-align: center;
+  background: var(--accent-purple);
+  color: #ffffff;
+  padding: 8px 0;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.cert-card:hover .view-cert-btn {
+  background: #9333ea;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
 }
 
 @media (max-width: 600px) {
