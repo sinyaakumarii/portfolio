@@ -19,17 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Hero Typewriter Effect ---
-  const heroTypewriter = document.getElementById('hero-typewriter');
+  // --- Hero Typewriter Effect (OPTIMIZED) ---
+  const heroTypewriter = document.getElementById('typewriter'); // Ensure this ID matches your HTML
+
   if (heroTypewriter) {
     const heroRoles = [
       "Machine Learning Engineer",
-      "Python Developer",
+      "Web Developer",
+      "AI Engineer"
     ];
+
     let roleIndex = 0;
     let charIdx = 0;
     let deleting = false;
-    let heroSpeed = 110;
+    let heroSpeed = 100;
 
     function typeHero() {
       const current = heroRoles[roleIndex];
@@ -37,28 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (deleting) {
         heroTypewriter.textContent = current.substring(0, charIdx - 1);
         charIdx--;
-        heroSpeed = 55;
+        heroSpeed = 50;
       } else {
         heroTypewriter.textContent = current.substring(0, charIdx + 1);
         charIdx++;
-        heroSpeed = 110;
+        heroSpeed = 100;
       }
 
       if (!deleting && charIdx === current.length) {
         deleting = true;
-        heroSpeed = 2200; // Pause at full phrase
+        heroSpeed = 2000; // Text likhne ke baad 2 second rukega
       } else if (deleting && charIdx === 0) {
         deleting = false;
         roleIndex = (roleIndex + 1) % heroRoles.length;
-        heroSpeed = 450; // Pause before next phrase
+        heroSpeed = 500;
       }
 
       setTimeout(typeHero, heroSpeed);
     }
-
-    setTimeout(typeHero, 800);
+    typeHero();
   }
-
   // --- Project Filtering System ---
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
